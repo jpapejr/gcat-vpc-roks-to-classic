@@ -1,0 +1,3 @@
+[submodule "gcat-landing-zone"]
+	path = gcat-landing-zone
+	url = git@github.com:jpapejr/gcat-landingzone-roks.git
