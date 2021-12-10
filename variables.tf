@@ -1,49 +1,68 @@
 # Variables
 variable ibmcloud_api_key {
+    default = "<ENTER AN API KEY HERE>"
     description = "An IBM Cloud IAM API key with permission to create VPC resources, ROKS clusters, and Transgit Gateway resources"
     sensitive = true
+    type = string
 }
 variable region {
     description = "An IBM Cloud VPC compute region (e.g. us-east)"
     default = "us-east"
+    type = string
 }
 variable unique_token {
     description = "A unique string to be prepended to all resources created"
+    type = string
+    default = "gcat-landing-vpc-to-classic"
 }
 variable resource_group {
     description = "Name of the target IBM Cloud resource group"
+    type = string
+    default = "gcat-landing"
 }
 variable classic_private_vlan{
     description = "Classic VLAN number (not ID) where classic compute will be created"
+    type = string
+    default = "<ENTER A CLASSIC VLAN NUMBER HERE>"
 }
 variable vsi_datacenter{
     description = "Classic data center to create classic compute. Must align with VLAN selected"
+    type = string
+    default = "<ENTER A CLASSIC DATA CENTER HERE>"
 }
 variable classic_private_vlan_router{
     description = "Classic BCR router where classic compute will be connected. Must align with data center and VLAN selection"
+    type = string
+    default = "<ENTER A CLASSIC VLAN NUMBER HERE>"
 }
 variable ssh_key{
     description = "Classic SSH Key for accessing created compute instances"
+    type = string
+    default = "<ENTER A CLASSIC SSH KEY NAME HERE>"
 }
 
 variable vsi_hostname {
     description = "Hostname for the classic compute instance"
     type = string
+    default = "test-vsi"
 }
 
 variable vsi_domain {
     description = "Domain name for the classic compute instance"
     type = string
+    default = "test.cloud"
 }
 
 variable cluster_worker_flavor {
     description = "VPC instance profile for ROKS workers"
     type = string
+    default = "bx2.4x16"
 }
 
 variable workers_per_zone {
     description = "Count of ROKS workers per zone"
     type = number
+    default = 3
 }
 
 variable kube_version {
@@ -60,6 +79,12 @@ variable worker_pools {
         machine_type     = string
         workers_per_zone = number
     }))
+}
+
+variable disable_public_service_endpoint {
+    default = false
+    type = bool
+    description = "If true, provision the cluster with private master endpoints"
 }
 
 variable TF_VERSION {

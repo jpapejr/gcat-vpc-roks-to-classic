@@ -1,14 +1,14 @@
 # Create a VSI on the designed private vlan
-data "ibm_network_vlan" "vlan" {
+data ibm_network_vlan vlan {
   number = var.classic_private_vlan
   router_hostname = var.classic_private_vlan_router
 }
 
-data "ibm_compute_ssh_key" "public_key" {
+data ibm_compute_ssh_key public_key {
     label = var.ssh_key 
 }
 
-resource "ibm_compute_vm_instance" "vsi" {
+resource ibm_compute_vm_instance vsi {
   hostname                   = var.vsi_hostname
   domain                     = var.vsi_domain
   os_reference_code          = "UBUNTU_20_64"

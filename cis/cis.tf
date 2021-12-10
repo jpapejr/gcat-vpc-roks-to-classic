@@ -1,6 +1,6 @@
 
 
-resource "ibm_cis" "cis_instance" {
+resource ibm_cis cis_instance {
   name              = "${var.unique_token}-cis"
   plan              = var.plan
   resource_group_id = var.resource_group

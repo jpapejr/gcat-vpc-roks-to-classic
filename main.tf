@@ -1,4 +1,4 @@
-module "landingzone" {
+module landingzone {
   source = "./gcat-landing-zone"
   ibmcloud_api_key = var.ibmcloud_api_key
   resource_group = var.resource_group
@@ -11,10 +11,11 @@ module "landingzone" {
   worker_pools = var.worker_pools
   subnets = var.subnets
   access_groups = var.access_groups
+  disable_public_service_endpoint = var.disable_public_service_endpoint
 }
 
 # Create transit gateway and connect to VPC and classic
-module "tg" {
+module tg {
   source = "./tg"
   ibmcloud_api_key = var.ibmcloud_api_key
   region = var.region
@@ -24,7 +25,7 @@ module "tg" {
 
 }
 
-module "classic" {
+module classic {
   source = "./classic"
   ibmcloud_api_key = var.ibmcloud_api_key
   unique_token = var.unique_token
@@ -36,9 +37,8 @@ module "classic" {
   vsi_domain = var.vsi_domain
 }
 
-module "cis" {
+module cis {
   source = "./cis"
-  ibmcloud_api_key = var.ibmcloud_api_key
   unique_token = var.unique_token
   resource_group = module.landingzone.resource_group_id
 }

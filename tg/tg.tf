@@ -1,5 +1,5 @@
 # Create transit gateway and connect to VPC and classic
-resource "ibm_tg_gateway" "tg_gw" {
+resource ibm_tg_gateway tg_gw {
   name = "${var.unique_token}-tg"
   location = var.region
   global = true
@@ -7,14 +7,14 @@ resource "ibm_tg_gateway" "tg_gw" {
 }
 
 
-resource "ibm_tg_connection" "tg_connection-vpc" {
+resource ibm_tg_connection tg_connection-vpc {
   gateway      = ibm_tg_gateway.tg_gw.id
   network_type = "vpc"
   name         = "${var.unique_token}-vpc-connection"
   network_id   =  var.vpc_crn
 }
 
-resource "ibm_tg_connection" "tg_connection-classic" {
+resource ibm_tg_connection tg_connection-classic {
   gateway      = ibm_tg_gateway.tg_gw.id
   network_type = "classic"
   name         = "${var.unique_token}-classic-connection"
