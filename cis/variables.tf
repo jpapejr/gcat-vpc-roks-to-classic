@@ -11,6 +11,6 @@ variable resource_group {
 }
 variable plan {
   description = "Service plan for CIS instance"
-  default = "standard"
+  default = "enterprise-usage"
   type = string
 }
