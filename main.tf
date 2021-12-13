@@ -17,7 +17,6 @@ module landingzone {
 # Create transit gateway and connect to VPC and classic
 module tg {
   source = "./tg"
-  ibmcloud_api_key = var.ibmcloud_api_key
   region = var.region
   unique_token = var.unique_token
   resource_group = module.landingzone.resource_group_id
@@ -27,7 +26,6 @@ module tg {
 
 module classic {
   source = "./classic"
-  ibmcloud_api_key = var.ibmcloud_api_key
   unique_token = var.unique_token
   classic_private_vlan = var.classic_private_vlan
   classic_private_vlan_router = var.classic_private_vlan_router
