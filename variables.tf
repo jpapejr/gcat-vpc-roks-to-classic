@@ -20,38 +20,6 @@ variable resource_group {
     type = string
     default = "gcat-landing"
 }
-variable classic_private_vlan{
-    description = "Classic VLAN number (not ID) where classic compute will be created"
-    type = string
-    default = "<ENTER A CLASSIC VLAN NUMBER HERE>"
-}
-variable vsi_datacenter{
-    description = "Classic data center to create classic compute. Must align with VLAN selected"
-    type = string
-    default = "<ENTER A CLASSIC DATA CENTER HERE>"
-}
-variable classic_private_vlan_router{
-    description = "Classic BCR router where classic compute will be connected. Must align with data center and VLAN selection"
-    type = string
-    default = "<ENTER A CLASSIC VLAN NUMBER HERE>"
-}
-variable ssh_key{
-    description = "Classic SSH Key for accessing created compute instances"
-    type = string
-    default = "<ENTER A CLASSIC SSH KEY NAME HERE>"
-}
-
-variable vsi_hostname {
-    description = "Hostname for the classic compute instance"
-    type = string
-    default = "test-vsi"
-}
-
-variable vsi_domain {
-    description = "Domain name for the classic compute instance"
-    type = string
-    default = "test.cloud"
-}
 
 variable cluster_worker_flavor {
     description = "VPC instance profile for ROKS workers"

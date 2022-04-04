@@ -24,17 +24,6 @@ module tg {
 
 }
 
-module classic {
-  source = "./classic"
-  unique_token = var.unique_token
-  classic_private_vlan = var.classic_private_vlan
-  classic_private_vlan_router = var.classic_private_vlan_router
-  ssh_key = var.ssh_key
-  vsi_datacenter = var.vsi_datacenter
-  vsi_hostname = var.vsi_hostname
-  vsi_domain = var.vsi_domain
-}
-
 module cis {
   source = "./cis"
   unique_token = var.unique_token
